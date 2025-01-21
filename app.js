@@ -20,7 +20,24 @@ function adicionarAmigo(){
 }
 
 function atualizarListaAmigos(arrayAmigos) {
-    document.getElementById('listaAmigos').innerHTML = arrayAmigos
-        .map(nomeAmigo => `<li>${nomeAmigo}</li>`).join('');
+    document.getElementById('listaAmigos').innerHTML = arrayAmigos.map(nomeAmigo => `<li>${nomeAmigo}</li>`).join('');
 }
 
+function gerarNumeroAleatorio(){
+    return Math.floor(Math.random() * arrayAmigos.length);
+}
+
+function sortearAmigo(){
+    let numero = gerarNumeroAleatorio();
+    let sorteado = document.getElementById('resultado');
+    if (arrayAmigos == ''){
+        alert('Adicione os nomes de seus amigos para realizar o sorteio');
+        return;
+    }
+    
+    sorteado.value = arrayAmigos[numero];
+    sorteado.innerHTML = `O seu amigo secreto é: ${sorteado.value} `;
+
+    document.getElementById('listaAmigos').innerHTML = '';
+    arrayAmigos = [];
+}
