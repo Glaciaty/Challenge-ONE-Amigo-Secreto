@@ -1,9 +1,9 @@
-let listaAmigos = [];
+let arrayAmigos = [];
 
 function adicionarAmigo(){
     let nomeAmigo = document.getElementById('amigo');
 
-    if (listaAmigos.includes(nomeAmigo.value)){
+    if (arrayAmigos.includes(nomeAmigo.value)){
         alert('Diferencie o nome de seus amigos para evitar dúvidas');
         nomeAmigo.value = '';
         return;
@@ -13,10 +13,14 @@ function adicionarAmigo(){
         alert("Digite um nome");
         return;
     } else {
-        listaAmigos.push(nomeAmigo.value);
+        arrayAmigos.push(nomeAmigo.value);
     }
-    
     nomeAmigo.value = '';
-    
-
+    atualizarListaAmigos(arrayAmigos);
 }
+
+function atualizarListaAmigos(arrayAmigos) {
+    document.getElementById('listaAmigos').innerHTML = arrayAmigos
+        .map(nomeAmigo => `<li>${nomeAmigo}</li>`).join('');
+}
+
